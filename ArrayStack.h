@@ -34,40 +34,55 @@ class ArrayStack {
 };
 
 
-/// constructor
+/**
+ * Constructor with no parameters
+ */
 template<typename T>
 ArrayStack<T>::ArrayStack() {
     max_size_ = DEFAULT_SIZE;
     contents = new T[max_size_];
     top_ = -1;
 }
+/**
+ * Constructor with parameters
+ */
 template <typename T>
 ArrayStack<T>::ArrayStack(std::size_t max) {
     max_size_ = max;
     contents = new T[max_size_];
     top_ = -1;
 }
-
+/**
+ * Destruct the arrayStack
+ */
 template <typename T>
 ArrayStack<T>::~ArrayStack() {
 	delete[] contents;
 }
-
+/**
+ * Clear the ArrayStack by setting the top to -1 value
+ */
 template <typename T>
 void ArrayStack<T>::clear() {
 	top_ = -1;
 }
-
+/**
+ * Verify if the ArrayStack is full or not by testing 
+ */
 template <typename T>
 bool ArrayStack<T>::full() {
 	return (top_ == max_size_ - 1);
 }
-
+/**
+ * Verify if the ArrayStack is empty by testing if the top is -1
+ */
 template <typename T>
 bool ArrayStack<T>::empty() {
     return (top_ == -1);
 }
-
+/**
+ * Insert a value to the ArrayStack but first verify if the stack is full or not
+ */
 template <typename T>
 void ArrayStack<T>::push(const T& data) {
 	if (full()) {
@@ -78,7 +93,7 @@ void ArrayStack<T>::push(const T& data) {
 	}
 }
 /**
- *  class pop 
+ *  Remove the value of the top from the ArrayStack
  */
 template <typename T>
 T ArrayStack<T>::pop() {
@@ -90,16 +105,24 @@ T ArrayStack<T>::pop() {
 	return contents[top_ + 1];
 }
 
+/**
+ * Show the value from the top by reference
+ */
 template <typename T>
 T& ArrayStack<T>::top() {
     return contents[top_];
 }
-
+/**
+ * Gives the size of the ArrayStack
+ */
 template <typename T>
 std::size_t ArrayStack<T>::size() {
 	return top_ + 1;
 }
 
+/**
+ * Gives the maximum value from my current ArrayStack
+ */
 template <typename T>
 std::size_t ArrayStack<T>::max_size() {
 	return max_size_;
