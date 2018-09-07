@@ -114,6 +114,7 @@ class ArrayListString : public ArrayList<char *> {
     std::size_t find(const char *data);
 };
 
+		//  Implementation of superclass (ArrayList) methods
 //! Constructor with no pararmeters
 /*!
 	When i instantiate this class with no parameters it creates a new
@@ -193,19 +194,6 @@ void ArrayList<T>::push_front(const T& data) {
 template<typename T>
 void ArrayList<T>::insert(const T& data, std::size_t index) {
 	std::size_t current = 0;
-	// if (full()) {
-	// 	throw std::out_of_range("Array list is full");
-	// } else if(index < 0 || index > max_size_) {
-	// 	throw std::out_of_range("Invalid index");
-	// } else {
-	// 	current = size_;
-	// 	while(current > index) {
-	// 		contents[current] = contents[current-1];
-	// 		current--;
-	// 	}
-	// 	contents[index] = data;
-	// 	size_ = size_ + 1;
-	// }
 
 	if (full()) {
 		throw std::out_of_range("List is full haha");
@@ -438,19 +426,123 @@ void ArrayList<T>::printList() {
 
 //------------------------------------------------------------
 
+		//  Implementation of subclass (ArrayListString) methods
 
+//! Destructor
+ArrayListString::~ArrayListString() {
+	delete[] 
+}
+//! Clear method
+/*!
+
+
+*/
+void ArrayListString::clear() {
+
+}
+
+//! Push Back
+/*!
+
+*/
+void ArrayListString::push_back(const char *data) {
+	ArrayListString::insert(*data, size_);
+}
+
+//! Push Front
+/*!
+
+*/
+void ArrayListString::push_front(const char *data) {
+	ArrayListString::insert(*data, 0u);
+}
+
+//! Insert
+/*!
+
+*/
+void ArrayListString::insert(const char *data, std::size_t index) {
+
+}
+
+//! Insert Sorted
+/*!
+
+*/
+void ArrayListString::insert_sorted(const char *data) {
+
+}
+
+//! Pop
+/*!
+
+*/
+char * ArrayListString::pop(std::size_t index) {
+
+}
+
+//! Pop Back
+/*!
+
+*/
+char * ArrayListString::pop_back() {
+	ArrayListString::pop(size_ -1);
+}
+
+//! Pop Front
+/*!
+
+*/
+char * ArrayListString::pop_front() {
+	ArrayListString::pop(0);
+}
+
+// Remove
+/*!
+
+*/
+void ArrayListString::remove(const char *data) {
+
+}
+
+// Contains
+/*!
+
+*/
+bool ArrayListString::contains(const char *data) {
+
+}
+
+// Find
+/*!
+
+*/
+std::size_t ArrayListString::find(const char *data) {
+
+}
 
 }  // namespace structures
 
 #endif
 
+// -------------------------------------------------------
 
+	// -------------NOTES------------------------ //
+/*!
+
+EXAḾPLE 1
+
+// call the function from the superclass
 popArrayListString() : pop() {
 
 }
 
+EXAMPLE 2
+
+//  implements the function pop from the subclass
 ArrayListString::pop(){
+	//  call the function from the superclass
 	ArrayList::pop();
 }
 
-
+*/
