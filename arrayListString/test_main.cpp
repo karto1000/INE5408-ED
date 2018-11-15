@@ -177,7 +177,7 @@ TEST_F(ArrayListStringTest, Insert) {
     for (auto i = 6; i < 10; ++i) {
         list.push_back(city[i]);
     }
-    list.insert(city[5], 5u);
+    list.insert(city[5], 5u);   
 
     for (auto i = 0; i < 10; ++i) {
         ASSERT_STREQ(city[i], list[i]);

@@ -17,7 +17,7 @@ namespace structures {
 */
 template<typename T>
 class ArrayList {
-//! Public methods and variables declaration of arrai list class
+//! Public methods and variables declaration of array list class
  public:
     //! Constructor with no parameters
     ArrayList();

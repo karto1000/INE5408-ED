@@ -1,8 +1,8 @@
-#include "arrayList.h"
+#include "string_list.h"
 
 using namespace structures;
 
 int main () {
 
-	auto al = new ArrayList<char*>();	
+	auto al = new ArrayList<int>();	
 }
