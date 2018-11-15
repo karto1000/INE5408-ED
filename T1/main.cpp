@@ -606,10 +606,9 @@ void matrizValueFuncion(string arg) {
             j++; // incrementa indice do vetor palavraEmpilha
           }
 
-          // verifica se a palavra que eu peguei do texto é o 'height' da matriz
           if (strcmp(palavraEmpilha, "height") == 0) {
             int m = 0;
-            char* heightValue = new char[10];
+            char* heightValue = new char[5];
 
             while(letter != '<') {
               myfile.get(letter);
@@ -619,10 +618,10 @@ void matrizValueFuncion(string arg) {
 
             height = atoi(heightValue);
             //printf("height: %d\n", height);
-            // verifica se a palavra que eu peguei é o 'width' da matriz
+
           } else if (strcmp(palavraEmpilha, "width") == 0) {
             int n = 0;
-            char* widthValue = new char[10];
+            char* widthValue = new char[5];
 
             while(letter != '<') {
               myfile.get(letter);
@@ -632,7 +631,7 @@ void matrizValueFuncion(string arg) {
 
             width = atoi(widthValue);
             //printf("width: %d\n", width);
-            // verifica se a palavra que eu capturei é o 'name' da minha matriz
+
           } else if (strcmp(palavraEmpilha, "name") == 0) {
             int o = 0;
             char* nameValue = new char[100];
@@ -731,8 +730,7 @@ void verificarTagsFunction(string arg) {
             } else {
               //printf("%s != %s\n\n", palavraTopoPilha, palavraDesempilha);
               //throw std::out_of_range("Invalid tag founded");
-              printf("error\n");
-              printf("%s %s\n", palavraTopoPilha, palavraDesempilha );
+              printf("error");
               exit(0);
             }
         }
@@ -756,22 +754,27 @@ void verificarTagsFunction(string arg) {
 
 
 //---------------------////////////--------------------------
-int main() {
+int main(int argc, char *argv[]) {
 
+    if (argc < 2 || argc > 2) {
+      cout << "Error: expecting -> ./program 'name_file'\n";
+    } else {
 
-    // creates a file that will receive my xml file name
-    string xmlfilename;
-    //std::cin >> xmlfilename;  // entrada
-    xmlfilename = "dataset04.xml";
+      // creates a file that will receive my xml file name
+      string xmlfilename;
+      //std::cin >> xmlfilename;  // entrada
+      //xmlfilename = "dataset01.xml";
+      xmlfilename = argv[1];
+      //std::thread verificarTags(verificarTagsFunction, xmlfilename);
+      verificarTagsFunction(xmlfilename);
+      //verificarTags.join();
+      //std::thread matrizValue(matrizValueFuncion, xmlfilename);
+      matrizValueFuncion(xmlfilename);
 
-    //std::thread verificarTags(verificarTagsFunction, xmlfilename);
-    verificarTagsFunction(xmlfilename);
-    //verificarTags.join();
-    //std::thread matrizValue(matrizValueFuncion, xmlfilename);
-    matrizValueFuncion(xmlfilename);
+      //std::cout << xmlfilename << std::endl;  // esta linha deve ser removida
+      //matrizValue.join();
 
-    //std::cout << xmlfilename << std::endl;  // esta linha deve ser removida
-    //matrizValue.join();
+    }
 
     return 0;
 }
