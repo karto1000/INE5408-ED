@@ -730,7 +730,7 @@ void verificarTagsFunction(string arg) {
             } else {
               //printf("%s != %s\n\n", palavraTopoPilha, palavraDesempilha);
               //throw std::out_of_range("Invalid tag founded");
-              printf("error");
+              printf("error: closing tag missing\n");
               exit(0);
             }
         }
@@ -740,7 +740,7 @@ void verificarTagsFunction(string arg) {
     //printf("Tamanho pilha: %d\n", (int)linked_stack->size());
     if ((int) linked_stack->size() != 0) {
       //throw std::out_of_range("No empty stack");
-      printf("error");
+      printf("error: tags not closed founded\n");
       exit(0);
     }
     myfile.close();
@@ -757,13 +757,13 @@ void verificarTagsFunction(string arg) {
 int main(int argc, char *argv[]) {
 
     if (argc < 2 || argc > 2) {
-      cout << "Error: expecting -> ./program 'name_file'\n";
+      cout << "Error: expecting -> ./program 'name_file.xml'\n";
     } else {
 
       // creates a file that will receive my xml file name
       string xmlfilename;
       //std::cin >> xmlfilename;  // entrada
-      //xmlfilename = "dataset01.xml";
+      //xmlfilename = "dataset02.xml";
       xmlfilename = argv[1];
       //std::thread verificarTags(verificarTagsFunction, xmlfilename);
       verificarTagsFunction(xmlfilename);
